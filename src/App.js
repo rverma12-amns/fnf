@@ -557,6 +557,9 @@ import React, { useState } from "react";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
 import "./App.css";
+import 'antd/dist/reset.css'; 
+
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

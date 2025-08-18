@@ -1,5 +1,3 @@
-
-
 import './App.css';
 import React, { useState } from "react";
 import * as XLSX from "xlsx";
@@ -133,6 +131,12 @@ const FnFForm = () => {
     });
   };
 
+  const handleDelete = (index) => {
+    const updatedData = [...formData];
+    updatedData.splice(index, 1);
+    setFormData(updatedData);
+  };
+
   const handleUpload = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -202,6 +206,7 @@ const FnFForm = () => {
               {Object.keys(newEntry).map((key) => (
                 <th key={key}>{formatLabel(key)}</th>
               ))}
+              <th>ACTIONS</th>
             </tr>
           </thead>
           <tbody>
@@ -210,6 +215,21 @@ const FnFForm = () => {
                 {Object.keys(newEntry).map((key) => (
                   <td key={key}>{entry[key]}</td>
                 ))}
+                <td>
+                  <button
+                    onClick={() => handleDelete(idx)}
+                    style={{
+                      backgroundColor: "#d9534f",
+                      color: "white",
+                      border: "none",
+                      padding: "4px 8px",
+                      cursor: "pointer",
+                      borderRadius: "4px"
+                    }}
+                  >
+                    DELETE
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
